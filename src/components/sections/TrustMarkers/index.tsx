@@ -32,8 +32,8 @@ export default function TrustMarkers() {
 
         gsap.to(counter, {
           innerHTML: targetValue,
-          duration: 2,
-          ease: "power2.out",
+          duration: 1.5,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
@@ -58,7 +58,7 @@ export default function TrustMarkers() {
           opacity: 1,
           duration: 0.8,
           stagger: 0.15,
-          ease: "power2.out",
+          ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
@@ -77,7 +77,7 @@ export default function TrustMarkers() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x-0 md:divide-x divide-brand-navy">
           {METRICS.map((metric, index) => (
             <div key={metric.id} className="text-center md:px-4">
-               <div className="font-mono text-4xl md:text-5xl lg:text-6xl text-brand-gold mb-2 font-light flex items-center justify-center">
+               <div className="font-mono text-6xl md:text-8xl text-brand-gold mb-2 font-light flex items-center justify-center tracking-tighter">
                  {metric.prefix && <span>{metric.prefix}</span>}
                  <span ref={(el) => { countersRef.current[index] = el; }}>
                    {prefersReducedMotion ? metric.value : 0}

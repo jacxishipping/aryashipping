@@ -40,6 +40,7 @@ export default function Corridors() {
   const containerRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -78,6 +79,21 @@ export default function Corridors() {
           }
         );
       });
+
+      // Subtle parallax on icons
+      iconsRef.current.forEach((icon) => {
+        if (!icon) return;
+        gsap.to(icon, {
+          y: 50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: icon,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          }
+        });
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -112,21 +128,25 @@ export default function Corridors() {
               return (
                 <div
                   key={phase.id}
-                  ref={(el) => { cardsRef.current[index] = el; }}
                   className={cn(
                     "relative flex items-center gap-8 md:gap-0",
                     isEven ? "md:flex-row" : "md:flex-row-reverse"
                   )}
                 >
                   {/* Icon Node */}
-                  <div className="absolute left-[24px] md:left-1/2 w-12 h-12 rounded-full border-2 border-brand-gold bg-brand-obsidian text-brand-gold flex items-center justify-center -translate-x-1/2 z-10">
+                  <div
+                    ref={(el) => { iconsRef.current[index] = el; }}
+                    className="absolute left-[24px] md:left-1/2 w-12 h-12 rounded-full border-2 border-brand-gold bg-brand-obsidian text-brand-gold flex items-center justify-center -translate-x-1/2 z-10"
+                  >
                     <Icon size={20} />
                   </div>
 
                   {/* Content Card */}
-                  <div className={cn(
-                    "ml-[60px] md:ml-0 md:w-[calc(50%-40px)] p-8 bg-brand-navy/10 border border-brand-navy rounded-xl hover:border-brand-gold/50 transition-colors group relative overflow-hidden",
-                    isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"
+                  <div
+                    ref={(el) => { cardsRef.current[index] = el; }}
+                    className={cn(
+                    "ml-[60px] md:ml-0 md:w-[calc(50%-40px)] p-12 bg-brand-navy/5 border border-brand-navy/20 rounded-xl hover:border-brand-gold/30 transition-all duration-500 group relative overflow-hidden",
+                    isEven ? "md:pr-16 md:text-right" : "md:pl-16 md:text-left"
                   )}>
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

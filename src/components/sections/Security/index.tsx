@@ -27,7 +27,7 @@ export default function Security() {
                className={cn(
                  "px-8 py-3 rounded-md font-medium text-sm transition-all duration-300",
                  activeTab === "container"
-                   ? "bg-brand-gold text-brand-obsidian shadow-lg"
+                   ? "bg-brand-slate text-brand-obsidian shadow-lg"
                    : "text-brand-slate/70 hover:text-brand-slate"
                )}
              >
@@ -38,7 +38,7 @@ export default function Security() {
                className={cn(
                  "px-8 py-3 rounded-md font-medium text-sm transition-all duration-300",
                  activeTab === "roro"
-                   ? "bg-brand-gold text-brand-obsidian shadow-lg"
+                   ? "bg-brand-slate text-brand-obsidian shadow-lg"
                    : "text-brand-slate/70 hover:text-brand-slate"
                )}
              >
@@ -62,7 +62,7 @@ export default function Security() {
                       Ideal for exotics, salvage vehicles, and high-value cargo. Vehicles are securely loaded into enclosed 40ft high-cube containers.
                     </p>
 
-                    <ul className="space-y-4">
+                    <ul className="space-y-6">
                       {["Multi-point wheel blocking & strapping", "Desiccant moisture control systems", "Tamper-proof seal verification", "Accommodates non-operational vehicles"].map((item, i) => (
                         <li key={i} className="flex items-start gap-3 text-brand-slate/90">
                            <Check size={20} className="text-brand-gold shrink-0 mt-0.5" />
@@ -96,7 +96,7 @@ export default function Security() {
                       The premier choice for standard, operational vehicles and heavy machinery. Vehicles are driven directly onto specialized vessels.
                     </p>
 
-                    <ul className="space-y-4">
+                    <ul className="space-y-6">
                       {["Highly cost-effective for operational units", "Faster loading and discharge times", "Under-deck stowage protection from elements", "Ideal for oversized trucks and machinery"].map((item, i) => (
                         <li key={i} className="flex items-start gap-3 text-brand-slate/90">
                            <Check size={20} className="text-brand-gold shrink-0 mt-0.5" />

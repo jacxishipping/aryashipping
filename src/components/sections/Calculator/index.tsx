@@ -73,7 +73,7 @@ export default function Calculator() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-brand-obsidian/80 backdrop-blur-xl border border-brand-navy rounded-xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-brand-obsidian/80 backdrop-blur-xl border border-brand-navy rounded-xl p-8 md:p-12 shadow-2xl relative overflow-hidden min-h-[450px]">
            {/* Progress Line */}
            <div className="absolute top-0 left-0 w-full h-1 bg-brand-navy">
              <div
@@ -82,8 +82,7 @@ export default function Calculator() {
              />
            </div>
 
-           {step < 5 ? (
-             <div className="grid md:grid-cols-2 gap-12 items-center">
+           <div className={cn("grid md:grid-cols-2 gap-12 items-center transition-opacity duration-500", step < 5 ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 pointer-events-none invisible")}>
                <div>
                   <h3 className="text-2xl font-heading font-semibold text-brand-slate mb-2">
                     {step === 1 && "Select Origin Region"}
@@ -130,11 +129,11 @@ export default function Calculator() {
                    </div>
                  </div>
 
-                 {step === 4 && formData.destination && (
+                 <div className={cn("mt-8 transition-all duration-300", step === 4 && formData.destination ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden invisible")}>
                    <button
                      onClick={calculateQuote}
                      disabled={isCalculating}
-                     className="mt-8 w-full py-4 bg-brand-gold text-brand-obsidian font-bold rounded hover:bg-white transition-colors flex items-center justify-center gap-2"
+                     className="w-full py-4 bg-brand-gold text-brand-obsidian font-bold rounded hover:bg-white transition-colors flex items-center justify-center gap-2"
                    >
                      {isCalculating ? (
                        <Loader2 size={18} className="animate-spin" />
@@ -142,12 +141,12 @@ export default function Calculator() {
                        <>Calculate Route <ArrowRight size={18} /></>
                      )}
                    </button>
-                 )}
+                 </div>
                </div>
-             </div>
-           ) : (
-             // Result View
-             <div className="text-center max-w-2xl mx-auto py-8">
+           </div>
+
+           {/* Result View */}
+           <div className={cn("text-center max-w-2xl mx-auto py-8 transition-all duration-500", step === 5 ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 pointer-events-none invisible")}>
                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold mb-6">
                  <CheckCircle2 size={32} />
                </div>
@@ -174,8 +173,7 @@ export default function Calculator() {
                    Recalculate
                  </button>
                </div>
-             </div>
-           )}
+           </div>
         </div>
       </div>
     </section>

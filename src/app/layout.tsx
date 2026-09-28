@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/layout/CustomCursor";
 
 const headingFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -33,8 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable} font-body bg-brand-obsidian text-brand-slate antialiased overflow-x-hidden`}
+        className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable} font-body bg-brand-obsidian text-brand-slate antialiased overflow-x-hidden bg-noise`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>
