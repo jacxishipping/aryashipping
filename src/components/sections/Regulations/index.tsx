@@ -48,7 +48,7 @@ export default function Regulations() {
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="flex flex-col md:flex-row gap-12">
            {/* Sidebar Navigation */}
-           <div className="md:w-1/3">
+           <div className="md:w-1/3 md:sticky md:top-32 self-start">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-slate mb-8">
                 Regulatory & Documentation Guide
               </h2>
@@ -90,7 +90,7 @@ export default function Regulations() {
                  <FileText size={240} />
               </div>
 
-              <div className="relative z-10">
+              <div key={activeTab} className="relative z-10 animate-in fade-in duration-500">
                  <h3 className="text-2xl font-heading font-semibold text-brand-gold mb-3">
                    {CONTENT[activeTab].title}
                  </h3>

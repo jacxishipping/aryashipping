@@ -64,9 +64,10 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-sm font-medium tracking-wide text-brand-slate/80 hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300"
+              className="text-sm font-medium tracking-wide text-brand-slate/80 hover:text-brand-gold transition-colors duration-300 relative group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           <a
@@ -90,19 +91,20 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 bg-brand-obsidian/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden",
+          "fixed inset-0 bg-brand-obsidian/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden",
           isMobileMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
         )}
       >
-        <nav className="flex flex-col items-center gap-8">
+        <nav className="flex flex-col items-center gap-10">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-2xl font-heading font-semibold text-brand-slate hover:text-brand-gold transition-colors duration-300"
+              className="text-4xl font-heading font-semibold text-brand-slate hover:text-brand-gold transition-colors duration-300 group relative"
             >
               {link.label}
+              <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-brand-gold transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>

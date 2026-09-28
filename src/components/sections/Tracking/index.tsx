@@ -45,18 +45,18 @@ export default function Tracking() {
               Monitor your asset&apos;s journey with military precision. Enter your VIN or Booking Bill of Lading (B/L) to inspect real-time milestones.
             </p>
 
-            <form onSubmit={handleSearch} className="relative">
+            <form onSubmit={handleSearch} className="relative mt-4">
               <input
                 type="text"
                 placeholder="Try 'AAS-2026-DXB' or VIN..."
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
-                className="w-full bg-brand-navy/20 border border-brand-navy focus:border-brand-gold text-brand-slate px-6 py-4 rounded-lg outline-none font-mono transition-colors placeholder:text-brand-slate/30"
+                className="w-full bg-transparent border-b-2 border-brand-navy focus:border-brand-gold text-brand-slate px-0 pb-4 text-2xl rounded-none outline-none font-mono transition-colors placeholder:text-brand-slate/30"
               />
               <button
                 type="submit"
                 disabled={isSearching}
-                className="absolute right-2 top-2 bottom-2 px-6 bg-brand-gold text-brand-obsidian font-bold rounded flex items-center gap-2 hover:bg-white transition-colors disabled:opacity-70"
+                className="absolute right-0 bottom-4 px-6 py-2 bg-brand-gold text-brand-obsidian font-bold rounded flex items-center gap-2 hover:bg-white transition-colors disabled:opacity-70"
               >
                 {isSearching ? "Searching..." : <><Search size={18} /> Track</>}
               </button>

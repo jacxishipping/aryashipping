@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight, Anchor, MapPin } from "lucide-react";
 import WebGLCanvas from "./WebGLCanvas";
+import MagneticButton from "@/components/layout/MagneticButton";
 
 export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -17,8 +18,8 @@ export default function Hero() {
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          stagger: 0.15,
+          duration: 1.2,
+          stagger: 0.2,
           ease: "power3.out",
           delay: 1.5, // Wait for preloader to finish
         }
@@ -44,7 +45,7 @@ export default function Hero() {
             <span className="text-xs tracking-widest text-brand-slate uppercase font-medium">Awwwards-Caliber Digital Experience</span>
           </div>
 
-          <h1 className="hero-element text-5xl md:text-7xl font-heading font-bold text-brand-slate leading-[1.1] mb-6">
+          <h1 className="hero-element text-[clamp(2.5rem,5vw,5rem)] font-heading font-bold text-brand-slate leading-[1.1] mb-6">
             Precision Automotive Logistics: <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-[#e8c660]">
               North America to Afghanistan
@@ -56,7 +57,8 @@ export default function Hero() {
           </p>
 
           <div className="hero-element flex flex-col sm:flex-row gap-4">
-            <a
+            <MagneticButton
+              as="a"
               href="#calculator"
               className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-gold text-brand-obsidian font-bold tracking-wide rounded-sm overflow-hidden transition-transform hover:scale-[1.02]"
             >
@@ -65,15 +67,16 @@ export default function Hero() {
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-            </a>
+            </MagneticButton>
 
-            <a
+            <MagneticButton
+              as="a"
               href="#tracking"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-brand-navyDark hover:border-brand-gold/50 text-brand-slate bg-brand-obsidian/40 backdrop-blur-sm rounded-sm transition-colors duration-300"
             >
               <Anchor size={18} className="text-brand-gold" />
               <span className="font-medium tracking-wide">Track Vehicle</span>
-            </a>
+            </MagneticButton>
           </div>
 
           {/* Stats quick view */}
